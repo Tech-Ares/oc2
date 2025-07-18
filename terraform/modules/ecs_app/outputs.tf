@@ -1,4 +1,5 @@
-# outputs.tf
+# terraform/modules/ecs_app/outputs.tf
+# 此檔案定義了 ECS 應用程式模組輸出的值。
 
 output "ecs_cluster_name" {
   description = "ECS 叢集名稱"
@@ -12,8 +13,7 @@ output "ecs_service_name" {
 
 output "ecr_repository_url" {
   description = "ECR 儲存庫 URL"
-  # 修正點：將 aws_ecr_repository.app_ecr 改為 data.aws_ecr_repository.app_ecr
-  value       = data.aws_ecr_repository.app_ecr.repository_url
+  value       = aws_ecr_repository.app_ecr.repository_url
 }
 
 output "ecs_task_definition_arn" {
@@ -25,3 +25,4 @@ output "ecs_container_instance_id" {
   description = "ECS 容器實例 ID"
   value       = aws_instance.ecs_container_instance.id
 }
+
